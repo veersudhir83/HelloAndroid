@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="io.sudheer.android.helloandroid.HomePageActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id ="@+id/action_settings_full_screen"
+        android:orderInCategory="100"
+        android:title="@string/action_setting_full_screen"
+        app:showAsAction="never" />
+</menu>
