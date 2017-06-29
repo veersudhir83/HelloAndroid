@@ -25,7 +25,7 @@ public class HomePageActivity extends AppCompatActivity {
         emailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own email action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Replace with your own email actions", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
