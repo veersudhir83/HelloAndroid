@@ -34,8 +34,6 @@ public class HomePageActivity extends AppCompatActivity {
         dialerButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Snackbar.make(view, "Replace with your own dialer action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
                 boolean hasTelephony = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
                 if(hasTelephony) {
                     startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "9966377798")));
