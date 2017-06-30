@@ -40,8 +40,8 @@ public class HomePageActivity extends AppCompatActivity {
                     startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "9966377798")));
                     //Snackbar.make(view, "Has Calling Feature", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 } else {
-                    Snackbar.make(view, "No Calling Feature", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    /*Snackbar.make(view, "No Calling Feature", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();*/
                     Toast.makeText(HomePageActivity.this, "Hello.. This is a toast", Toast.LENGTH_LONG).show();
                 }
             }
