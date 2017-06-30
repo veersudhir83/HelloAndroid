@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -37,11 +38,11 @@ public class HomePageActivity extends AppCompatActivity {
                 boolean hasTelephony = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
                 if(hasTelephony) {
                     startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "9966377798")));
-                    Snackbar.make(view, "Has Calling Feature", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    //Snackbar.make(view, "Has Calling Feature", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 } else {
                     Snackbar.make(view, "No Calling Feature", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+                    Toast.makeText(HomePageActivity.this, "Hello.. This is a toast", Toast.LENGTH_LONG).show();
                 }
             }
         });
