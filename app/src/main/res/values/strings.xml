@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Hello Android</string>
+    <string name="app_name">MyApp</string>
     <string name="action_settings">Settings Menu</string>
-    <string name="homepage_welcome_message1">Hello Android !!</string>
-    <string name="homepage_welcome_message2">How are you Today ?</string>
+    <string name="homepage_welcome_message1">Welcome Sudheer !!\n</string>
+    <string name="homepage_welcome_message2">Below are your frequent apps. Play around and have fun !!</string>
     <string name="action_setting_full_screen">Full Screen</string>
 </resources>
