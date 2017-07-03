@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -30,8 +33,24 @@ public class HomePageActivity extends AppCompatActivity {
         emailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own email actions", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                final Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                final PackageManager pm = getPackageManager();
+                final List<ResolveInfo> matches = pm.queryIntentActivities(intent, 0);
+                ResolveInfo best = null;
+                for (final ResolveInfo info : matches) {
+                    if (info.activityInfo.packageName.toLowerCase().endsWith(".gm") || info.activityInfo.name.toLowerCase().contains("gmail")) {
+                        best = info;
+                        if (best != null)
+                            intent.setClassName(best.activityInfo.packageName, best.activityInfo.name);
+                    } else {
+                        Toast.makeText(HomePageActivity.this, "Gmail app is not installed !!", Toast.LENGTH_LONG).show();
+                        /*Snackbar.make(view, "Gmail app is not installed !!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();*/
+                    }
+                }
+                startActivity(intent);
+
             }
         });
 
@@ -46,7 +65,7 @@ public class HomePageActivity extends AppCompatActivity {
                 } else {
                     /*Snackbar.make(view, "No Calling Feature", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();*/
-                    Toast.makeText(HomePageActivity.this, "Feature not available on this device", Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomePageActivity.this, "Telephone feature is not supported !!", Toast.LENGTH_LONG).show();
                 }
             }
         });
