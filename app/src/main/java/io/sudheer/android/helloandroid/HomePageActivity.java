@@ -1,11 +1,15 @@
 package io.sudheer.android.helloandroid;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -42,17 +46,34 @@ public class HomePageActivity extends AppCompatActivity {
                 } else {
                     /*Snackbar.make(view, "No Calling Feature", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();*/
-                    Toast.makeText(HomePageActivity.this, "Hello.. This is a toast", Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomePageActivity.this, "Feature not available on this device", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
-        FloatingActionButton mapButton = (FloatingActionButton) findViewById(R.id.map_button);
+        final FloatingActionButton mapButton = (FloatingActionButton) findViewById(R.id.map_button);
         mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own map action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(isGoogleMapsInstalled()) {
+                    // Create a Uri from an intent string. Use the result to create an Intent.
+                    Uri gmmIntentUri = Uri.parse("google.streetview:cbll=46.414382,10.013988");
+
+                    // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                        // Make the Intent explicit by setting the Google Maps package
+                        mapIntent.setPackage("com.google.android.apps.maps");
+                        startActivity(mapIntent);
+                    }
+                } /*else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mapButton);
+                    builder.setMessage("Please install Google Maps");
+                    builder.setCancelable(false);
+                    builder.setPositiveButton("Install", getGoogleMapsListener());
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }*/
             }
         });
     }
@@ -77,5 +98,34 @@ public class HomePageActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean isGoogleMapsInstalled()
+    {
+        try
+        {
+            ApplicationInfo info = getPackageManager().getApplicationInfo("com.google.android.apps.maps", 0 );
+            return true;
+        }
+        catch(PackageManager.NameNotFoundException e)
+        {
+            return false;
+        }
+    }
+
+    public DialogInterface.OnClickListener getGoogleMapsListener()
+    {
+        return new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.apps.maps"));
+                startActivity(intent);
+
+                //Finish the activity so they can't circumvent the check
+                finish();
+            }
+        };
     }
 }
