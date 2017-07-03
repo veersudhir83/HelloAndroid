@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">MyApp</string>
-    <string name="action_settings">Settings Menu</string>
+    <string name="home_menu_settings">Settings Menu</string>
     <string name="homepage_welcome_message1">Welcome Sudheer !!\n</string>
     <string name="homepage_welcome_message2">Below are your frequent apps. Play around and have fun !!</string>
-    <string name="action_setting_full_screen">Full Screen</string>
+    <string name="home_menu_full_screen">Full Screen</string>
+    <string name="home_menu_exit">Exit</string>
+    <string name="email_button_label_text">Mail</string>
+    <string name="dialer_button_label_text">Dialer</string>
+    <string name="map_button_label_text">NearBy</string>
 </resources>

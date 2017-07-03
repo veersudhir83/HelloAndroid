@@ -26,6 +26,9 @@ public class HomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.face);
 
         FloatingActionButton emailButton = (FloatingActionButton) findViewById(R.id.email_button);
         emailButton.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +54,8 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton dialerButon = (FloatingActionButton) findViewById(R.id.dialer_button);
-        dialerButon.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton dialerButton = (FloatingActionButton) findViewById(R.id.dialer_button);
+        dialerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean hasTelephony = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
@@ -108,7 +111,7 @@ public class HomePageActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.home_menu_settings) {
             return true;
         }
 

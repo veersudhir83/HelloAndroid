@@ -30,6 +30,17 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
+    <TextView
+        android:id="@+id/email_button_label_id"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:text="@string/email_button_label_text"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:layout_gravity="bottom|left"
+        android:layout_marginLeft="@dimen/margin_18"/>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/dialer_button"
         android:layout_width="wrap_content"
@@ -38,6 +49,17 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_dialer" />
 
+    <TextView
+        android:id="@+id/dialer_button_label_id"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialer_button_label_text"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/margin_18"/>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/map_button"
         android:layout_width="wrap_content"
@@ -45,5 +67,16 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
+
+    <TextView
+        android:id="@+id/map_button_label_id"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:text="@string/map_button_label_text"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginLeft="@dimen/margin_18"/>
 
 </android.support.design.widget.CoordinatorLayout>
