@@ -8,13 +8,13 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -42,9 +42,8 @@ public class HomePageActivity extends AppCompatActivity {
                         if (best != null)
                             intent.setClassName(best.activityInfo.packageName, best.activityInfo.name);
                     } else {
-                        Toast.makeText(HomePageActivity.this, "Gmail app is not installed !!", Toast.LENGTH_LONG).show();
-                        /*Snackbar.make(view, "Gmail app is not installed !!", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();*/
+                        Snackbar.make(view, "Gmail app is not installed !!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
                     }
                 }
                 startActivity(intent);
@@ -61,9 +60,8 @@ public class HomePageActivity extends AppCompatActivity {
                     startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "")));
                     //Snackbar.make(view, "Has Calling Feature", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 } else {
-                    /*Snackbar.make(view, "No Calling Feature", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();*/
-                    Toast.makeText(HomePageActivity.this, "Telephone feature is not supported !!", Toast.LENGTH_LONG).show();
+                    Snackbar.make(view, "No Calling Feature", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 }
             }
         });
