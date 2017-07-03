@@ -57,7 +57,7 @@ public class HomePageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(isGoogleMapsInstalled()) {
                     // Create a Uri from an intent string. Use the result to create an Intent.
-                    Uri gmmIntentUri = Uri.parse("google.streetview:cbll=46.414382,10.013988");
+                    Uri gmmIntentUri = Uri.parse("geo:0,0?q=restaurants");
 
                     // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -66,14 +66,14 @@ public class HomePageActivity extends AppCompatActivity {
                         mapIntent.setPackage("com.google.android.apps.maps");
                         startActivity(mapIntent);
                     }
-                } /*else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(mapButton);
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setMessage("Please install Google Maps");
-                    builder.setCancelable(false);
+                    builder.setCancelable(true);
                     builder.setPositiveButton("Install", getGoogleMapsListener());
                     AlertDialog dialog = builder.create();
                     dialog.show();
-                }*/
+                }
             }
         });
     }
