@@ -20,8 +20,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_home_page"
-        android:id="@+id/include" />
+    <include layout="@layout/content_home_page" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/email_button"

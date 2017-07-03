@@ -2,7 +2,6 @@ package io.sudheer.android.helloandroid;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -26,9 +25,11 @@ public class HomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.face);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.mipmap.face);
+        }
 
         FloatingActionButton emailButton = (FloatingActionButton) findViewById(R.id.email_button);
         emailButton.setOnClickListener(new View.OnClickListener() {
@@ -38,12 +39,9 @@ public class HomePageActivity extends AppCompatActivity {
                 intent.setType("text/plain");
                 final PackageManager pm = getPackageManager();
                 final List<ResolveInfo> matches = pm.queryIntentActivities(intent, 0);
-                ResolveInfo best = null;
                 for (final ResolveInfo info : matches) {
                     if (info.activityInfo.packageName.toLowerCase().endsWith(".gm") || info.activityInfo.name.toLowerCase().contains("gmail")) {
-                        best = info;
-                        if (best != null)
-                            intent.setClassName(best.activityInfo.packageName, best.activityInfo.name);
+                        intent.setClassName(info.activityInfo.packageName, info.activityInfo.name);
                     } else {
                         Snackbar.make(view, "Gmail app is not installed !!", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
@@ -122,7 +120,7 @@ public class HomePageActivity extends AppCompatActivity {
     {
         try
         {
-            ApplicationInfo info = getPackageManager().getApplicationInfo("com.google.android.apps.maps", 0 );
+            getPackageManager().getApplicationInfo("com.google.android.apps.maps", 0);
             return true;
         }
         catch(PackageManager.NameNotFoundException e)
