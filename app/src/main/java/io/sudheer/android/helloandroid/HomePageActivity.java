@@ -37,7 +37,7 @@ public class HomePageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 boolean hasTelephony = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
                 if(hasTelephony) {
-                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "9966377798")));
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "")));
                     //Snackbar.make(view, "Has Calling Feature", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 } else {
                     /*Snackbar.make(view, "No Calling Feature", Snackbar.LENGTH_LONG)
