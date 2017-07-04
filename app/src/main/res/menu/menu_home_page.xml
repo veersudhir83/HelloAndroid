@@ -3,17 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="io.sudheer.android.helloandroid.HomePageActivity">
     <item
-        android:id="@+id/home_menu_settings"
+        android:id="@+id/home_menu_settings_id"
         android:orderInCategory="100"
         android:title="@string/home_menu_settings"
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/home_menu_full_screen_id"
         android:orderInCategory="100"
         android:title="@string/home_menu_full_screen"
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/home_menu_exit_id"
         android:orderInCategory="100"
         android:title="@string/home_menu_exit"
         app:showAsAction="never" />

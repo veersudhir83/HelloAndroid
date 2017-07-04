@@ -14,11 +14,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import java.util.List;
 
 public class HomePageActivity extends AppCompatActivity {
 
+    private boolean toggle = true;
+
+    /**
+     * Default action to render the components with necessary listeners
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +101,9 @@ public class HomePageActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Default action to render the components of the menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -101,21 +111,29 @@ public class HomePageActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Function to invoke necessary actions on selection of menu items
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.home_menu_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.home_menu_settings_id:
+                showAppSettings();
+                return true;
+            case R.id.home_menu_exit_id:
+                this.finishAndRemoveTask();
+                return true;
+            case R.id.home_menu_full_screen_id:
+                showViewInFullScreen();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Checks if google maps is installed
+     */
     private boolean isGoogleMapsInstalled()
     {
         try
@@ -129,6 +147,9 @@ public class HomePageActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Opens the google play store if maps is not installed on the device
+     */
     private DialogInterface.OnClickListener getGoogleMapsListener()
     {
         return new DialogInterface.OnClickListener()
@@ -143,5 +164,32 @@ public class HomePageActivity extends AppCompatActivity {
                 finish();
             }
         };
+    }
+
+    /**
+     * Shows the app in full screen mode
+     */
+    protected void showViewInFullScreen() {
+        View decorView = getWindow().getDecorView();
+        if (toggle) {
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+            toggle = false;
+        } else {
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_VISIBLE);
+            toggle = true;
+        }
+    }
+
+    /**
+     * Shows the app settings
+     */
+    private void showAppSettings() {
+        Toast.makeText(getApplicationContext(), "Show App Settings Here !!", Toast.LENGTH_LONG).show();
     }
 }
