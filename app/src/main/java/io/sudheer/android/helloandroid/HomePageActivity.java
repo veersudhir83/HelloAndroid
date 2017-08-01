@@ -1,5 +1,9 @@
 /*
- * Maintainer "Sudheer Veeravalli" <veersudhir83@gmail.com>
+ * Copyright (c) 2017. Sudheer Veeravalli <veersudhir83@gmail.com>
+ * All Rights Reserved
+ *
+ * This product/document is protected by copyright and distributed under
+ * licenses restricting copying, distribution and decompilation.
  */
 
 package io.sudheer.android.helloandroid;
