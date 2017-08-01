@@ -5,4 +5,8 @@
     <string name="homepage_welcome_message2">Below are your frequent apps. Play around and have fun !!</string>
     <string name="home_menu_full_screen">Full Screen</string>
     <string name="home_menu_exit">Exit</string>
+    <string name="quick_email">Email</string>
+    <string name="dialer">Dialer</string>
+    <string name="restaurants_near_me">Restaurants</string>
+    <string name="places_near_me">Nearby</string>
 </resources>

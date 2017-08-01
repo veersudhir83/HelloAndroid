@@ -15,23 +15,33 @@
         android:text="@string/homepage_welcome_message1"
         android:textStyle="bold"
         android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
+        android:textSize="@dimen/default_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="10sp"
         android:layout_marginTop="36sp" />
 
     <TextView
+        android:id="@+id/home_message_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="gravity"
         android:textStyle="bold"
         android:textColor="@color/colorGreen"
-        android:textSize="20sp"
+        android:textSize="@dimen/default_text_size"
         android:text="@string/homepage_welcome_message2"
         app:layout_constraintLeft_toLeftOf="@+id/home_message_1"
         app:layout_constraintTop_toBottomOf="@+id/home_message_1" />
 
-
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="gravity"
+            android:textStyle="bold"
+            android:textColor="@color/colorGreen"
+            android:textSize="@dimen/default_text_size"
+            android:text=""
+            app:layout_constraintLeft_toLeftOf="@+id/home_message_2"
+            app:layout_constraintTop_toBottomOf="@+id/home_message_2" />
 
 </android.support.constraint.ConstraintLayout>

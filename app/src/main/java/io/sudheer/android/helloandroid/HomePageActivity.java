@@ -1,3 +1,7 @@
+/*
+ * Maintainer "Sudheer Veeravalli" <veersudhir83@gmail.com>
+ */
+
 package io.sudheer.android.helloandroid;
 
 import android.content.DialogInterface;
@@ -14,7 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.util.List;
@@ -74,13 +77,39 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-        final FloatingActionButton mapButton = (FloatingActionButton) findViewById(R.id.map_button);
+        final FloatingActionButton mapButton = (FloatingActionButton) findViewById(R.id.restaurants_button);
         mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(isGoogleMapsInstalled()) {
                     // Create a Uri from an intent string. Use the result to create an Intent.
                     Uri gmmIntentUri = Uri.parse("geo:0,0?q=restaurants");
+
+                    // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                        // Make the Intent explicit by setting the Google Maps package
+                        mapIntent.setPackage("com.google.android.apps.maps");
+                        startActivity(mapIntent);
+                    }
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setMessage("Please install Google Maps");
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("Install", getGoogleMapsListener());
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+        });
+
+        final FloatingActionButton nearMeButton = (FloatingActionButton) findViewById(R.id.map_button);
+        nearMeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isGoogleMapsInstalled()) {
+                    // Create a Uri from an intent string. Use the result to create an Intent.
+                    Uri gmmIntentUri = Uri.parse("geo:0,0?q=attractions");
 
                     // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -169,7 +198,7 @@ public class HomePageActivity extends AppCompatActivity {
     /**
      * Shows the app in full screen mode
      */
-    protected void showViewInFullScreen() {
+    private void showViewInFullScreen() {
         View decorView = getWindow().getDecorView();
         if (toggle) {
             decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -179,9 +208,7 @@ public class HomePageActivity extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
             toggle = false;
         } else {
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_VISIBLE);
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             toggle = true;
         }
     }

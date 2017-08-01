@@ -6,44 +6,105 @@
     android:layout_height="match_parent"
     tools:context="io.sudheer.android.helloandroid.HomePageActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+    <TableLayout
+            android:id="@+id/tableLayout1"
+            android:showDividers="middle"
+            android:divider="@drawable/divider_list"
+            android:padding="@dimen/element_large_spacing"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:stretchColumns="5">
 
-    </android.support.design.widget.AppBarLayout>
+        <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
 
-    <include layout="@layout/content_home_page" />
+            <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/email_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/dialer_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_dialer" />
+        <include layout="@layout/content_home_page"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/map_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_menu_myplaces" />
+        <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
+            <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/email_button"
+                    android:layout_width="20sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_dialog_email"/>
+                <TextView
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/icon_title_text_size"
+                        android:text="@string/quick_email"/>
+
+        </TableRow>
+        <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/dialer_button"
+                    android:layout_width="20sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_dialog_dialer"/>
+                <TextView
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/icon_title_text_size"
+                        android:text="@string/dialer"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/restaurants_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_myplaces"/>
+
+                <TextView
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/icon_title_text_size"
+                        android:text="@string/restaurants_near_me"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/map_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_search"/>
+
+            <TextView
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/icon_title_text_size"
+                    android:text="@string/places_near_me"/>
+        </TableRow>
+    </TableLayout>
 </android.support.design.widget.CoordinatorLayout>
