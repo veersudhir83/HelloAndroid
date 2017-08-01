@@ -2,7 +2,7 @@
  * Copyright (c) 2017. Sudheer Veeravalli <veersudhir83@gmail.com>
  * All Rights Reserved
  *
- * This product/document is protected by copyright and distributed under
+ * This product(or document) is protected by copyright and distributed under
  * licenses restricting copying, distribution and decompilation.
  */
 
@@ -19,6 +19,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +46,9 @@ public class HomePageActivity extends AppCompatActivity {
             getSupportActionBar().setHomeAsUpIndicator(R.mipmap.face);
         }
 
+        /**
+         * To Open Gmail and send messages
+         */
         FloatingActionButton emailButton = (FloatingActionButton) findViewById(R.id.email_button);
         emailButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +70,9 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * To Open dialer
+         */
         FloatingActionButton dialerButton = (FloatingActionButton) findViewById(R.id.dialer_button);
         dialerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +88,9 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * To show restaurants near me
+         */
         final FloatingActionButton mapButton = (FloatingActionButton) findViewById(R.id.restaurants_button);
         mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +117,9 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * To show attractions near me
+         */
         final FloatingActionButton nearMeButton = (FloatingActionButton) findViewById(R.id.map_button);
         nearMeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +142,30 @@ public class HomePageActivity extends AppCompatActivity {
                     builder.setPositiveButton("Install", getGoogleMapsListener());
                     AlertDialog dialog = builder.create();
                     dialog.show();
+                }
+            }
+        });
+
+        /**
+         * To open colornote app
+         */
+        final FloatingActionButton openNotes = (FloatingActionButton) findViewById(R.id.notes_button);
+        openNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                Log.d("HomePageActivity", "Here111");
+                // Always use string resources for UI text.
+                // This says something like "Share this photo with"
+                String title = getResources().getString(R.string.chooser_title);
+                Log.d("HomePageActivity", "Here222" + title);
+                // Create intent to show chooser
+                Intent chooser = Intent.createChooser(intent, title);
+
+                // Verify the intent will resolve to at least one activity
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    Log.d("HomePageActivity", "Here333");
+                    startActivity(chooser);
                 }
             }
         });

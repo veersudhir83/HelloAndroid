@@ -106,5 +106,24 @@
                     android:textSize="@dimen/icon_title_text_size"
                     android:text="@string/places_near_me"/>
         </TableRow>
+        <TableRow
+                android:id="@+id/tableRow5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/notes_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_edit"/>
+
+            <TextView
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/icon_title_text_size"
+                    android:text="@string/notes"/>
+        </TableRow>
     </TableLayout>
 </android.support.design.widget.CoordinatorLayout>
