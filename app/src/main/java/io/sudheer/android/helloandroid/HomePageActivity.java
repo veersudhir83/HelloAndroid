@@ -155,17 +155,19 @@ public class HomePageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 Log.d("HomePageActivity", "Here111");
-                // Always use string resources for UI text.
-                // This says something like "Share this photo with"
-                String title = getResources().getString(R.string.chooser_title);
-                Log.d("HomePageActivity", "Here222" + title);
-                // Create intent to show chooser
-                Intent chooser = Intent.createChooser(intent, title);
-
-                // Verify the intent will resolve to at least one activity
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    Log.d("HomePageActivity", "Here333");
-                    startActivity(chooser);
+                intent.setType("text/plain");
+                final PackageManager pm = getPackageManager();
+                final List<ResolveInfo> matches = pm.queryIntentActivities(intent, 0);
+                for (final ResolveInfo info : matches) {
+                    if (info.activityInfo.packageName.toLowerCase().endsWith(".note") || info.activityInfo.name.toLowerCase().contains("note")) {
+                        Snackbar.make(view, "Notes app is installed !!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        intent.setClassName(info.activityInfo.packageName, info.activityInfo.name);
+                        startActivity(intent);
+                    } else {
+                        Snackbar.make(view, "Notes app is not installed !!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
                 }
             }
         });
