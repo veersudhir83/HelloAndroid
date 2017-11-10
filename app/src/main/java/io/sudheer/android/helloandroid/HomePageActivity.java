@@ -160,8 +160,8 @@ public class HomePageActivity extends AppCompatActivity {
                 final List<ResolveInfo> matches = pm.queryIntentActivities(intent, 0);
                 for (final ResolveInfo info : matches) {
                     if (info.activityInfo.packageName.toLowerCase().endsWith(".note") || info.activityInfo.name.toLowerCase().contains("note")) {
-                        Snackbar.make(view, "Notes app is installed !!", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
+                        /*Snackbar.make(view, "Notes app is installed !!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();*/
                         intent.setClassName(info.activityInfo.packageName, info.activityInfo.name);
                         startActivity(intent);
                     } else {
